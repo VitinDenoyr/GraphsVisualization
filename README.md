@@ -1,6 +1,6 @@
 # GraphsVisualization
 Projeto de visualização de grafos usando HTML, CSS, Javascript e a biblioteca vis.js
-[Acessar Projeto](https://graphs.denoyr.com.br/)
+[Acesse Graphs Visualization](https://graphs.denoyr.com.br/)
 
 ## Ferramentas
 ### Realização de Grafos Simples
