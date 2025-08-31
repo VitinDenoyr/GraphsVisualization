@@ -8,9 +8,9 @@
     <meta name="theme-color" content="#bbbbbb" />
     
     <!-- CSS e Scripts -->
-    <link rel="stylesheet" type="text/css" href="/public/css/main.css?v=1.10">
-    <script src="/public/script/constructGraph.js?v=1.10"></script>
-    <script src="/public/script/generateEdges.js?v=1.10"></script>
+    <link rel="stylesheet" type="text/css" href="/public/css/main.css?v=1.12">
+    <script src="/public/script/constructGraph.js?v=1.12"></script>
+    <script src="/public/script/generateEdges.js?v=1.12"></script>
     
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

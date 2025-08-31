@@ -157,37 +157,6 @@ function getGraphData(d){ //d = lista de números se aprovada por validate(d) e 
 		return [n+1,n+1];
 	}
 
-    function hasFreeConnnection(){ 
-        let minDesc = n+1;
-        let difMin = n+1;
-        let x1 = n+1, x2 = n+1;
-        let listOfFrees = [];
-        for(let i = 0; i < n; i++){
-            if(i == r) continue;
-            let cont = 0;
-            if(d[i] > v[i]) cont += 1;
-            if(adj[i][r] === false) cont += 2;
-            if(((cont&1) != 0) && ((cont&2) != 0)) listOfFrees.push(i);
-            
-            if((cont&2) != 0) minDesc = Math.min(minDesc, i);
-            if(i > r && v[i] < Math.min(r+1,d[i])) cont += 4;
-            if((cont&4) != 0) difMin = Math.min(difMin, i);
-
-            if(x1 == n+1 && i < r){
-                for(let j = 0; j < i; j++){
-                    if(adj[i][j] == 0){
-                        x1 = j; x2 = i;
-                    }
-                }
-            }
-        }
-        if(listOfFrees.length > 0){
-            const rand = (Math.floor(Math.random() * 997))%(listOfFrees.length);
-            return [listOfFrees[rand],-1,-1,-1,-1];
-        }
-        return [-1,minDesc,difMin,x1,x2];
-    }
-
     function findU(vi){ 
         for(let i = 0; i < n; i++){
             if(i == r || i == vi || adj[i][vi] == 0 || adj[i][r] == 1) continue;
@@ -232,17 +201,20 @@ function getGraphData(d){ //d = lista de números se aprovada por validate(d) e 
     // Execução do algoritmo
     while(r < n){
         if(d[r] == v[r]){
+            console.log("skip")
             r++; continue;
         }
         let state = hasFreeConnection();
         // Caso 0
-        if(state < n){ 
+        if(state < n){
+            console.log("c0")
             let vi = state;
             adj[vi][r] = true; adj[r][vi] = true;
             v[vi]++; v[r]++;
         }
         // Caso 1
         else if((state = findMinimalDisconnected()) < r){ 
+            console.log("c1")
             let vi = state;
             let u = findU(vi);
             if(d[r] - v[r] == 1){
@@ -256,7 +228,8 @@ function getGraphData(d){ //d = lista de números se aprovada por validate(d) e 
             v[r] += 2;
         } 
         // Caso 2
-        else if((state = findTrickyVertexAboveR()) < n){ 
+        else if((state = findTrickyVertexAboveR()) < n){
+            console.log("c2")
             let vk = state, vi, u;
             [vi,u] = findIandU(vk);
             adj[u][vi] = false; adj[vi][u] = false;
@@ -266,6 +239,7 @@ function getGraphData(d){ //d = lista de números se aprovada por validate(d) e 
         } 
         // Caso 3
         else if((state = getPairBelowR()).toString() !== [n+1,n+1].toString()){
+            console.log("c3")
             let vi = state[0], vj = state[1], u, w;
             [u,w] = findUandW(vi,vj);
             adj[u][vi] = false; adj[vi][u] = false;
@@ -275,6 +249,7 @@ function getGraphData(d){ //d = lista de números se aprovada por validate(d) e 
             v[r]++; v[w]--;
         } 
         else {
+            console.log("skip")
             r++; continue;
         }
     }
