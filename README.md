@@ -1,4 +1,4 @@
-# Visualização de Grafosg
+# Visualização de Grafos
 Projeto de visualização de grafos usando HTML, CSS, Javascript e a biblioteca vis.js
 [Acesse Graphs Visualization](https://graphs.denoyr.com/)
 
